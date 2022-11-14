@@ -1,7 +1,9 @@
-package com.example.myJava.service;
+package com.example.myJava.board.service;
 
-import com.example.myJava.dto.BoardDto;
-import com.example.myJava.mapper.BoardMapper;
+
+import com.example.myJava.board.dto.BoardDto;
+
+import com.example.myJava.board.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

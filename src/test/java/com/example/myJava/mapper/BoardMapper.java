@@ -1,7 +1,9 @@
 package com.example.myJava.mapper;
 
-import org.apache.ibatis.annotations.
-import com.example.myJava.dto.BoardDto;
+
+import com.example.myJava.board.dto.BoardDto;
+import org.apache.ibatis.annotations.Mapper;
+
 import java.util.List;
 
 @Mapper

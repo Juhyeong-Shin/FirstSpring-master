@@ -1,8 +1,8 @@
-package com.example.myJava.controller;
+package com.example.myJava.board.controller;
 
 
-import com.example.myJava.dto.BoardDto;
-import com.example.myJava.service.BoardService;
+import com.example.myJava.board.dto.BoardDto;
+import com.example.myJava.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

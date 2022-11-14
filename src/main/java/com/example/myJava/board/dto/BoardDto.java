@@ -1,4 +1,4 @@
-package com.example.myJava.dto;
+package com.example.myJava.board.dto;
 
 import lombok.Data;
 
