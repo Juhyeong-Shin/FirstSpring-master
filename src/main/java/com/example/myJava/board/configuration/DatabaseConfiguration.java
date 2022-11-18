@@ -1,10 +1,9 @@
 
-package com.example.myJava.configuration;
+package com.example.myJava.board.configuration;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.junit.jupiter.api.Test;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +37,17 @@ public class DatabaseConfiguration {
     }
 
     @Bean
+    @ConfigurationProperties(prefix="mybatis.configuration")
+    public org.apache.ibatis.session.Configuration mybatisConfig(){
+        return new org.apache.ibatis.session.Configuration();
+    }
+
+    @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
         sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:/mapper/**/sql-*.xml"));
+        sqlSessionFactoryBean.setConfiguration(mybatisConfig());
 
         return sqlSessionFactoryBean.getObject();
     }
@@ -61,11 +67,7 @@ public class DatabaseConfiguration {
 //        return new HikariConfig();
 //    }
 //
-//    @Bean
-//    @ConfigurationProperties(prefix="mybatis.configuration")
-//    public org.apache.ibatis.session.Configuration mybatisConfig(){
-//        return new org.apache.ibatis.session.Configuration();
-//    }
+
 //
 //
 ////    @Bean

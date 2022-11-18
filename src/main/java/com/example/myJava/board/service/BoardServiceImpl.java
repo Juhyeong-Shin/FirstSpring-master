@@ -41,4 +41,10 @@ public class BoardServiceImpl implements BoardService{
     public void deleteBoard(int boardIdx) throws Exception {
         boardMapper.deleteBoard(boardIdx);
     }
+
+    @Override
+    public void setTestJson(BoardDto testJson) throws Exception {
+        boardMapper.setTestJson(testJson);
+
+    }
 }

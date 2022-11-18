@@ -19,4 +19,6 @@ public class BoardDto {
     private String updaterId;
 
     private String updatedDatetime;
+
+    private String testJson;
 }
