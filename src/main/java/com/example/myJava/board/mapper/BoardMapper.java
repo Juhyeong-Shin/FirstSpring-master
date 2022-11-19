@@ -21,6 +21,5 @@ public interface BoardMapper {
 
     void deleteBoard(int boardIdx) throws Exception;
 
-    void setTestJson(BoardDto testJson) throws Exception;
 }
 
