@@ -26,8 +26,9 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public BoardDto selectBoardDetail(int boardIdx) throws Exception{
-        BoardDto board = boardMapper.selectBoardDetail(boardIdx);
         boardMapper.updateHitCount(boardIdx);
+
+        BoardDto board = boardMapper.selectBoardDetail(boardIdx);
 
         return board;
     }
@@ -40,11 +41,5 @@ public class BoardServiceImpl implements BoardService{
     @Override
     public void deleteBoard(int boardIdx) throws Exception {
         boardMapper.deleteBoard(boardIdx);
-    }
-
-    @Override
-    public void setTestJson(BoardDto testJson) throws Exception {
-        boardMapper.setTestJson(testJson);
-
     }
 }

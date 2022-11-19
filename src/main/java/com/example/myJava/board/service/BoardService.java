@@ -17,5 +17,4 @@ public interface BoardService {
 
     void deleteBoard(int boardIdx) throws Exception;
 
-    void setTestJson(BoardDto testJson) throws Exception;
 }

@@ -44,7 +44,7 @@
             title,
             contents,
             hit_cnt,
-            DATE_FORMAT(created_datetime, '%Y.%m.%d %H:%i:%s') AS created_datetime,
+            created_datetime,
             creator_id
         FROM
             t_board
@@ -61,7 +61,7 @@
         SET
             hit_cnt = hit_cnt + 1
         WHERE
-            board_idx = #{boardIdx}
+            board_idx = #{boardIdx} AND deleted_yn = 'N'
         ]]>
 	</update>
 
