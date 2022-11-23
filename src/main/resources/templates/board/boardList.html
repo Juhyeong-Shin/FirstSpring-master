@@ -2,7 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>board</title>
-    <link rel="stylesheet" th:href="@{./css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
 <div class="container">
@@ -24,14 +24,12 @@
         </thead>
         <tbody>
         <tr th:if="${#lists.size(list)} > 0" th:each="list : ${list}">
-            <td th:text="${list.board_idx}"></td>
+            <td th:text="${list.boardIdx}"></td>
             <td class="title">
-                <a herf="/board/openBoardDetail.do?board_idx="
-                    th:attrappend="href=${list.board_idx}"
-                    th:text="${list.title}"></a></td>
-            <td th:text="${list.hit_cnt}"></td>
-            <td th:text="${#temporals.format(
-                list.createdDatetime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                <a href="/board/openBoardDetail.do?boardIdx=" th:attrappend="href=${list.boardIdx}" th:text="${list.title}"></a></td>
+            <td th:text="${list.hitCnt}"></td>
+            <td th:text="${list.createdDatetime}"></td>
+
         </tr>
         <tr th:unless="${#lists.size(list)} > 0">
             <td colspan="4">조회된 결과가 없습니다.</td>

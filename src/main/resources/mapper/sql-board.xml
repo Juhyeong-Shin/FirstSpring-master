@@ -9,7 +9,7 @@
             board_idx,
             title,
             hit_cnt,
-            DATE_FORMAT(created_datetime, '%Y,%m, %d, %H:%i:%s') AS created_datetime
+            DATE_FORMAT(created_datetime, '%Y-%m-%d %H:%i:%s') AS created_datetime
         FROM
             t_board
         WHERE
@@ -18,7 +18,7 @@
         ]]>
     </select>
 
-    <insert id="insertBoard" parameterType="String" useGeneratedKeys="true" keyProperty="boardIdx">
+    <insert id="insertBoard" parameterType="com.example.myJava.board.dto.BoardDto">
         <![CDATA[
         INSERT INTO t_board
         (

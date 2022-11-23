@@ -2,6 +2,8 @@ package com.example.myJava.board.controller;
 
 import com.example.myJava.board.dto.BoardDto;
 import com.example.myJava.board.service.BoardService;
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import java.util.List;
 
 @Controller
 public class BoardController {
+
     private Logger log = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private BoardService boardService;
@@ -23,6 +26,11 @@ public class BoardController {
         ModelAndView mv = new ModelAndView("/board/boardList");
         List<BoardDto> list = boardService.selectBoardList();
         mv.addObject("list", list);
+
+
+        log.debug("로그");
+
+        System.out.println(list);
 
         return mv;
     }
@@ -44,6 +52,8 @@ public class BoardController {
 
         BoardDto board = boardService.selectBoardDetail(boardIdx);
         mv.addObject("board", board);
+
+        System.out.println(mv);
 
         return mv;
     }

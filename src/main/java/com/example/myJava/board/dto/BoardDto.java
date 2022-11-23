@@ -2,6 +2,8 @@ package com.example.myJava.board.dto;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class BoardDto {
     private int boardIdx;
@@ -14,11 +16,9 @@ public class BoardDto {
 
     private String creatorId;
 
-    private String createdDatetime;
+    private LocalDateTime createdDatetime;
 
     private String updaterId;
 
     private String updatedDatetime;
-
-    private String testJson;
 }
