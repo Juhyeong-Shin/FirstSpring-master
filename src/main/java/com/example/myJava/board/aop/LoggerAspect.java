@@ -17,11 +17,9 @@ public class LoggerAspect {
         String name = joinPoint.getSignature().getDeclaringTypeName();
         if (name.indexOf("Controller") > -1) {
             type = "Controller  \t:  ";
-        }
-        else if (name.indexOf("Service") > -1) {
+        } else if (name.indexOf("Service") > -1) {
             type = "ServiceImpl  \t:  ";
-        }
-        else if (name.indexOf("Mapper") > -1) {
+        } else if (name.indexOf("Mapper") > -1) {
             type = "Mapper  \t\t:  ";
         }
         log.debug(type + name + "." + joinPoint.getSignature().getName() + "()");

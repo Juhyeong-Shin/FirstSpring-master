@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace = "com.example.myJava.board.mapper.BoardMapper">
-    <select id="selectBoardList" resultType="com.example.myJava.board.dto.BoardDto">
+<mapper namespace = "com.example.myJava.board.biz.dao.BoardMapper">
+    <select id="selectBoardList" resultType="com.example.myJava.board.biz.dao.BoardDao">
         <![CDATA[
         SELECT
             board_idx,
@@ -18,7 +18,7 @@
         ]]>
     </select>
 
-    <insert id="insertBoard" parameterType="com.example.myJava.board.dto.BoardDto">
+    <insert id="insertBoard" parameterType="com.example.myJava.board.biz.dao.BoardDao">
         <![CDATA[
         INSERT INTO t_board
         (
@@ -37,7 +37,7 @@
         ]]>
     </insert>
 
-    <select id="selectBoardDetail" parameterType="int" resultType="com.example.myJava.board.dto.BoardDto">
+    <select id="selectBoardDetail" parameterType="int" resultType="com.example.myJava.board.biz.dao.BoardDao">
 		<![CDATA[
         SELECT
             board_idx,
@@ -65,7 +65,7 @@
         ]]>
 	</update>
 
-    <update id="updateBoard" parameterType="com.example.myJava.board.dto.BoardDto">
+    <update id="updateBoard" parameterType="com.example.myJava.board.biz.dao.BoardDao">
 		<![CDATA[
         UPDATE t_board SET
                            title = #{title},

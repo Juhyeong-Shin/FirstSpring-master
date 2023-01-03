@@ -1,11 +1,13 @@
-package com.example.myJava.board.dto;
+package com.example.myJava.board.biz.vo.model;
 
 import lombok.Data;
+import org.apache.ibatis.type.Alias;
 
 import java.time.LocalDateTime;
 
+@Alias("TnBoard")
 @Data
-public class BoardDto {
+public class TnBoard {
     private int boardIdx;
 
     private String title;
@@ -22,3 +24,4 @@ public class BoardDto {
 
     private String updatedDatetime;
 }
+
