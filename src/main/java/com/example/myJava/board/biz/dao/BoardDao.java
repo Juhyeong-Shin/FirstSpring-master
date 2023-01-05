@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 @Repository
 public interface BoardDao {
-    abstract List<TnBoard> selectBoardList() throws Exception;
+    List<TnBoard> selectBoardList() throws Exception;
 
 
 }

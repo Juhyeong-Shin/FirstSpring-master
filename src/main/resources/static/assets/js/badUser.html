@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<meta charset="utf-8">
+<%@ include file="../include/common_admin_head.jsp" %>
+<jsp:include page="../include/inc_lnb.jsp">
+  <jsp:param name="menu_1depth" value="02"/>
+  <jsp:param name="menu_2depth" value="04"/>
+</jsp:include>
+</head>
+<body>
+
+<div class="containerWrap">
+  <div class="container">
+    <div class="top clearfix">
+      <ul class="menu_dept clearfix">
+        <li>회원관리</li>
+        <li>Bad User 관리</li>
+      </ul>
+    </div>
+    <div class="current tabContent">
+      <div class="cn_wrap">
+        <div class="table_top">
+          <span class="table_sbj">검색</span>
+        </div><!--// table_top -->
+        <table class="horizon_tbl">
+          <colgroup>
+            <col width="10%">
+            <col width="*">
+          </colgroup>
+          <tbody>
+          <tr>
+            <th>검색</th>
+            <td>
+              <select id="searchField">
+                <option value="usrIdx">회원 IDX</option>
+                <option value="usrId">회원 ID</option>
+                <option value="refCd">추천인코드</option>
+                <option value="bioAddr">지갑 주소</option>
+              </select>
+              <input type="text" id="searchVal" placeholder="" style="width: 300px;">
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <a href="#n" class="btn_c dis_b" id="btnSearch">검 색</a>
+      </div>
+      <div class="cn_wrap srch_result">
+        <div class="table_top clearfix">
+
+        </div>
+        <div id="jsGrid">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<body>
+<script>
+  var pageAction = function() {
+    var init =function(){
+      tableRender();
+      eventBind();
+    }
+
+    function evenBind() {
+      $('#btnSearch').click(function (event) {
+      event.preventDefault();
+
+      $("#jsGrid").jsGrid("reset");
+      });
+
+      $("#searchVal").keydown(function(e) {
+        if(e.keyCode==13) {
+          $('#btnSearch').click();
+        }
+      });
+    }
+
+    function tableRender() {
+      jsGridInit();
+
+      $('#jsGrid').jsGrid({
+        controller : {
+          localDate: function loadDta(filter) {
+            var d = $.Deferred();
+            var param = {
+              searchField : $('#searchFied').val(),
+              searchVal : $.trim($('#searchVal').val())
+            };
+            console.log(filter);
+            $.extend(filter, param);
+            PostJson('api/v1/user/badUserList', filter, function(json){
+              if(json.code != '200') {
+
+              }
+              d.resolve(json);
+            });
+            return d.promise();
+          }
+        },
+
+        fields: [ {
+          title : 'usrIdx',
+          name : "usrIdx",
+          align: "center",
+          width: 60
+        }, {
+          title : '회원ID',
+          name : "usrId",
+          align: "cneter",
+          width : 140
+        }, {
+
+        }
+
+
+
+        ]
+      })
+    }
+
+
+
+
+  }
+
+
+
+
+
+
+</script>
+</body>
+
+</html>
